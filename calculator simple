@@ -1,0 +1,72 @@
+#include <stdio.h>
+
+float soma(float n1, float n2);
+float subtracao(float n1, float n2);
+float multiplicacao(float n1, float n2);
+float divisao(float n1, float n2);
+
+float soma(float n1, float n2){
+  return n1 + n2;
+}
+
+float subtracao(float n1, float n2){
+  return n1 - n2;
+}
+
+float multiplicacao(float n1, float n2){
+  return n1 * n2;
+}
+
+float divisao(float n1, float n2){
+  return n1 / n2;
+}
+
+int main(){
+  float n1, n2, resultado = 0;
+  char c;
+
+  printf("----calculadora simples----\n");
+
+  printf("Digite a operacao que vc deseja realizar (+, -, *, /) \n");
+  scanf("%c", &c);
+
+  while(c == '+' || c == '-' || c == '*' || c == '/'){
+
+    printf("Digite um numero: ");
+    scanf("%f", &n1);
+
+    printf("Digite um numero: ");
+    scanf("%f", &n2);
+
+    switch(c){
+      case'+':
+      resultado = soma(n1, n2);
+      printf("Resultado: %.2f\n", resultado);
+      break;
+
+      case'-':
+      resultado = subtracao(n1, n2);
+      printf("Resultado: %.2f\n", resultado);
+      break;
+
+      case'*':
+      resultado = multiplicacao(n1, n2);
+      printf("Resultado: %.2f\n", resultado);
+      break;
+
+      case'/':
+      if(n2 != 0){
+        resultado = divisao(n1, n2);
+      printf("Resultado: %.2f\n", resultado);
+      }
+      else
+        printf("Nao é possivel dividir por 0, seu burro\n");
+      break;  
+    }
+    printf("Digite a operacao que vc deseja realizar (+, -, *, /) \n");
+    setbuf(stdin, NULL);
+    scanf("%c", &c);
+    
+  }
+  return 0;
+}
